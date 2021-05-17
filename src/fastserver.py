@@ -142,28 +142,32 @@ def parse_cars():
                     'price_ru': price_ru,
                     'price_usd': price_usd
                 }
+                # print(carslinks)
 
                 finalcars.append(carslinks)
 
-        print(len(finalcars))
+        # print(len(finalcars))
+
+        cars = f"{k}.json"
+        with open(cars, 'w', encoding='utf-8') as json_file:
+            json.dump(finalcars, json_file, ensure_ascii = False, indent =4)
 
         return finalcars
-
-
-        # cars = f"{k}.json"
-        # with open(cars, 'w', encoding='utf-8') as json_file:
-        #     json.dump(finalcars, json_file, ensure_ascii = False, indent =4)
-
-
         # print('file dumped')
 
 @app.get("/")
 def home_view():
     return {"av":"parser"}
 
+@app.get("/getcars/{name}")
+def get_cars(name: str):
+    with open(f'{name}.json') as f:
+        cars = json.load(f)
+        # print(cars)
+    return {"cars":cars}
 
 @app.post("/cars")
 def get_brands():
-    parse_cars()
-    return {"Done": "parse"}
+    # parse_cars()
+    return {"data": parse_cars()}
 

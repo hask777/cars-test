@@ -53,7 +53,7 @@ brands_code_list = {
     'tesla': 2521,
     'gaz': 1310,
     'zaz': 1551,
-    'moscvich': 2051,
+    'moskvich': 2051,
     'uaz': 1464,
-    'Эксклюзив': 5019
+    'eksklyuziv': 5019
 }
