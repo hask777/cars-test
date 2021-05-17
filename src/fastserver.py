@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 from fastapi import FastAPI, Form, Request
 import re
-from avlist import brands_code_list
+from src.avlist import brands_code_list
 
 
 app = FastAPI()
@@ -161,7 +161,7 @@ def home_view():
 
 @app.get("/getcars/{name}")
 def get_cars(name: str):
-    with open(f'{name}.json') as f:
+    with open(f'src/{name}.json') as f:
         cars = json.load(f)
         # print(cars)
     return {"cars":cars}
